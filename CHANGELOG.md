@@ -3,6 +3,12 @@
 All notable changes to ToshLLM are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Improved
+
+- **LLMs: i-quant, Q2_0, MXFP4 and Q8_0 MoE models with an MTP head generate faster when experts run on the CPU.** With MoE offload on a Radeon RX 6700 XT, Qwen3.6-35B-A3B writes 8-11% faster in UD-IQ2_M and UD-IQ3_XXS; under Dynamic MoE it gains 7-10% with 42% of the experts in video memory and nothing with the whole 12 GB card.
+
 ## [0.87.19] - 2026-10-08
 
 ### Improved
