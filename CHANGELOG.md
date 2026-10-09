@@ -3,6 +3,12 @@
 All notable changes to ToshLLM are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Improved
+
+- **LLMs: with the math tools on, answers that need no calculation stream again.** Only calculations wait for their check now, in the app's chat, the web chat and API clients.
+
 ## [0.87.18] - 2026-10-07
 
 ### Fixed
