@@ -928,9 +928,8 @@ final class ImageGenTests: XCTestCase {
     func testCommandBufferSplitClearsWatchdog() {
         // small frames stay in one buffer
         XCTAssertEqual(ImageGenLimits.nCB(width: 512, height: 512), 1)
-        // Qwen-Image 2.1 at 1024x1024 takes 6.5 s a step: one buffer got probed by the driver
+        // a 1024 frame already splits, and the largest use the engine's maximum
         XCTAssertGreaterThan(ImageGenLimits.nCB(width: 1024, height: 1024), 1)
-        // 1920x1920 (36.7 s a step) failed with 4 buffers and completed with 8
         XCTAssertEqual(ImageGenLimits.nCB(width: 1920, height: 1920), 8)
         XCTAssertEqual(ImageGenLimits.nCB(width: 2048, height: 2048), 8)
     }

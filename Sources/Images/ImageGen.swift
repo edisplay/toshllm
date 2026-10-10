@@ -334,8 +334,8 @@ enum ImageGenCatalog {
                     urlString: "https://huggingface.co/Qwen/Qwen3-VL-8B-Instruct-GGUF/resolve/main/mmproj-Qwen3VL-8B-Instruct-F16.gguf",
                     fileName: "mmproj-Qwen3VL-8B-Instruct-F16.gguf", sizeGB: 1.16),
             ],
-            // The published recipes: 25 steps (Turbo: its own 8) at guidance 1 with Euler. 2048
-            // completes on a card without a display and hangs one that draws the desktop.
+            // The published recipes: 25 steps (Turbo: its own 8) at guidance 1 with Euler; a card
+            // that draws the desktop stops at 1920.
             defaultSteps: turbo ? qwenImage21TurboSigmas.count - 1 : 25, cfgScale: 1.0,
             minVRAMGB: minVRAMGB, recommendable: recommendable,
             maxLongEdge: 2048, displayMaxLongEdge: 1920, nativeLongEdge: 2048,
@@ -555,8 +555,8 @@ enum ImageGenLimits {
         return count <= 2 ? full : max(256 * 256, 2 * full / count)
     }
 
-    /// Command buffers per diffusion step. On a card that draws the desktop the driver resets the GPU
-    /// when a buffer runs past ~5 s and a long kernel hides its progress; 8 is the engine's maximum.
+    /// Command buffers per diffusion step, short enough that the driver's hang check never trips;
+    /// 8 is the engine's maximum.
     static func nCB(width: Int, height: Int) -> Int {
         let px = width * height
         return min(8, max(1, Int((Double(px) / 450_000).rounded(.up))))
