@@ -11,6 +11,7 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 ### Improved
 
+- **Images: large images generate faster on Radeon RX 6000 and Radeon Pro W6000.** On a Radeon RX 6700 XT each step of a 1920x1920 Qwen-Image 2.1 Turbo image takes 32.6 seconds instead of 37.1, with the same image.
 - **Images: the last stage of every image takes about half the time.** On a Radeon RX 6700 XT it goes from 12.6 to 5.7 seconds for Qwen-Image 2.1 Turbo at 1024x1024 and from 18.6 to 9.9 for Z-Image Turbo, with the same image.
 
 ### Fixed

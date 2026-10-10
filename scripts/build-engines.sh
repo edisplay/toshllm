@@ -371,6 +371,12 @@ build_image_engine() {
     # A copy that swaps two contiguous blocks of dims (the Wan VAE's channel-first norm) goes
     # through 32x32 tiles; TOSH_CPY_TRANSPOSE_DISABLE restores the generic copy.
     git apply --include='ggml/src/ggml-metal/*' -p1 "$ROOT/patches/image/0065-image-metal-cpy-transpose.patch"
+    # Diffusion attention (f16 K/V, no mask) runs a prefill kernel without the mask paths;
+    # TOSH_FA_NOMASK_DISABLE restores pf_amd.
+    git apply --include='ggml/src/ggml-metal/*' -p1 "$ROOT/patches/image/0066-image-metal-fa-nomask.patch"
+    # Large matrix products walk their tiles in bands of src1 that stay in the cache;
+    # TOSH_MM_BAND_MB=0 restores the plain order.
+    git apply --include='ggml/src/ggml-metal/*' -p1 "$ROOT/patches/image/0067-image-metal-mm-band.patch"
     echo "applied ggml-metal hunks of 0001 + 0003 + core fallback 0004 + ext wave64 0008 to stable-diffusion.cpp"
 
     # This ggml is on a different commit, so an ambiguous hunk can land on the wrong
