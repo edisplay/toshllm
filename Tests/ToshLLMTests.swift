@@ -785,6 +785,9 @@ final class ImageGenTests: XCTestCase {
         XCTAssertFalse(ImageGenCatalog.zImageTurbo.halfPartials)
         XCTAssertEqual(q.maxLongEdge(drivesDisplay: false), 2048)
         XCTAssertEqual(q.maxLongEdge(drivesDisplay: true), 1920)
+        // the size picker offers that ceiling itself, not the step below it
+        XCTAssertEqual(ImageGenLimits.baseSizes(vramGB: 12, residentGB: ImageGenCatalog.qwenImage21TurboQ4.residentGB,
+                                                maxLongEdge: q.maxLongEdge(drivesDisplay: true)).max(), 1920)
         XCTAssertEqual(ImageGenCatalog.sd15.maxLongEdge(drivesDisplay: true), ImageGenCatalog.sd15.maxLongEdge)
     }
 

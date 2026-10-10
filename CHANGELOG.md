@@ -9,6 +9,10 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 
 - **Images: the last stage of every image is shorter again.** On a Radeon RX 6700 XT it goes from 9.9 to 8.8 seconds for Z-Image Turbo at 1024x1024 and from 33.3 to 31.0 for Qwen-Image 2.1 Turbo at 1920x1920, with the same image.
 
+### Fixed
+
+- **Images: Qwen-Image 2.1 can be set to 1920 px on a card that also draws the desktop.** The size list stopped at 1792, one step below the size 0.87.21 made possible.
+
 ## [0.87.21] - 2026-10-10
 
 ### Added

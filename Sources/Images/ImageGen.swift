@@ -520,7 +520,7 @@ enum ImageGenLimits {
                           attnVRAMSq: Double = 0, maxLongEdge: Int = .max,
                           streamedAttention: Bool = true) -> [Int] {
         let candidates = [512, 640, 768, 896, 1024, 1152, 1280, 1440,
-                          1600, 1792, 2048, 2304, 2560, 3072]
+                          1600, 1792, 1920, 2048, 2304, 2560, 3072]
         return candidates.filter { base in
             guard base <= maxLongEdge else { return false }
             let short = max(256, Int((Double(base) * 9 / 16 / 64).rounded()) * 64)
