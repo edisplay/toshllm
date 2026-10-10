@@ -3,6 +3,20 @@
 All notable changes to ToshLLM are documented here.
 Format based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [Unreleased]
+
+### Added
+
+- **Images: Qwen-Image 2.1 Turbo, in four sizes from 8 GB up.** It draws in 8 steps instead of 25, so a 1024x1024 image takes about a minute on a Radeon RX 6700 XT; like Qwen-Image 2.1 it writes text, edits from reference images and has a non-commercial license.
+
+### Improved
+
+- **Images: the last stage of every image takes about half the time.** On a Radeon RX 6700 XT it goes from 12.6 to 5.7 seconds for Qwen-Image 2.1 Turbo at 1024x1024 and from 18.6 to 9.9 for Z-Image Turbo, with the same image.
+
+### Fixed
+
+- **Images: large images no longer stop with a GPU timeout on a card that also draws the desktop.** On a Radeon RX 6700 XT, Qwen-Image 2.1 Turbo at 1920x1920 failed halfway through and now completes, at the same speed.
+
 ## [0.87.20] - 2026-10-09
 
 ### Improved
